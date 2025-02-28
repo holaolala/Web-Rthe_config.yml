@@ -71,11 +71,22 @@
             color: #555;
         }
 
-                .no-copy {
+        .no-copy {
             user-select: none; 
-            -webkit-user-select: none; 
-            -moz-user-select: none; 
-            -ms-user-select: none;
+           -webkit-user-select: none; 
+           -moz-user-select: none; 
+           -ms-user-select: none;
+        }
+
+        .hidden-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: none;
+        z-index: 9999;
         }
     </style>
 </head>
@@ -91,7 +102,9 @@
             <div class="typing-text">
 
             <a href="https://holaolala.github.io/Website-personal/" class="no-copy">Klik di sini</a>
-                    
+
+        <div class="hidden-screen"></div>
+                
             <footer>
 
             </footer>
@@ -104,24 +117,6 @@
     </audio>
 
     <script>
-        document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-        });
-
-        document.addEventListener('copy', function(event) {
-            event.preventDefault();
-            alert('cukup lihat di sini jangan disalin');
-        });
-
-        document.addEventListener("visibilitychange", function() {
-        if (document.hidden) {
-            document.body.style.backgroundColor = "black"; // Layar jadi hitam
-            document.body.innerHTML = ""; // Hapus semua konten
-        } else {
-            location.reload(); // Reload halaman saat pengguna kembali
-        }
-    });
-        
         const cintaContainer = document.querySelector('.cinta-container');
         const ungkapanContainer = document.querySelector('.ungkapan-container');
         const backgroundMusic = document.getElementById('backgroundMusic');
@@ -135,7 +130,7 @@
     const typingTextContainer = document.querySelector('.typing-text');
     const cursor = document.querySelector('.cursor');
     const text = "To my fav artist, aku beruntung bisa kenal kamu, makasih sudah pindah ke sekolah SMAN BEN5, kalo kamu ga pindah aku ga bakal kenal kamu, thank u so much dengan kehadiran kamu bisa ngebuat hidup aku jadi berwarna, dan aku kagum banget dengan segalanya tentang kamu terutama dengan semua karya seni kamu, entah itu gambar kamu yang berwarna atau monokrom, seni digital, lukisan, skill menggambar kamu, teknik yang kamu kuasai ntah itu arsir, shading, bisa gambar objek dari berbagai sudut, dan banyak lagi yang ga bisa aku sebut. Gambar kamu yang bagimu enggak bagus dan biasa aja, di mata aku bagus loh ril no fek2. Aku juga berterima kasih untuk segala kenangan bersama kamu ^-^, pas main badminton, main ping pong pake bola basket uwough, dan mabar game, aku bakal tetap ingat terus dengan hero yang kamu mainin, kamu biasanya role mage, exp, dan support, kalo mage hero Kagura, exp Natalia, support Angela, eh iya hyper kamu make Hayabusa hehe. Honestly kurang puas kalo cuma segitu kenangan kita, tapi yah kalo udah ga bisa bersama lagi engga apa2 aku engga memaksakan kmu harus berteman dengan aku terus, tapi kalo kamu mau kembali berteman dengan aku, i'm still here dan bersedia kapan pun kalo kamu mau kembali⁠◔⁠‿⁠◔."; // Teks Anda
-    const typingSpeed = 150; // Kecepatan mengetik (ms per karakter)
+    const typingSpeed = 200; // Kecepatan mengetik (ms per karakter)
 
     let charIndex = 0;
 
@@ -146,17 +141,41 @@
             setTimeout(typeText, typingSpeed);
         } else {
             cursor.style.animation = "none"; // Hentikan animasi berkedip saat selesai mengetik
-        }
-    }
 
+        }
+            document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        }
+
+        document.addEventListener('copy', function(event) {
+            event.preventDefault();
+            alert('cukup lihat di sini jangan disalin');
+        }
+
+        document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+            document.body.style.backgroundColor = "black"; // Layar jadi hitam
+            document.body.innerHTML = ""; // Hapus semua konten
+        } else {
+            location.reload(); // Reload halaman saat pengguna kembali
+        }
     // Mulai animasi mengetik setelah klik tombol
     function switchToUngkapan() {
         cintaContainer.style.display = 'none';
         ungkapanContainer.style.display = 'block';
         backgroundMusic.play();
         typeText(); // Mulai mengetik
-    }
+        }
 
+        document.addEventListener("visibilitychange",
+    function hiddenScreen() {
+    const hiddenScreen = document.querySelector('.hidden-screen');
+        if (document.hidden) {
+        hiddenScreen.style.display = "block"; // Layar menjadi hitam saat keluar
+        } else {
+        hiddenScreen.style.display = "none"; // Kembali normal saat dibuka lagi
+        }
+});
     </script>
 </body>
 </html>
