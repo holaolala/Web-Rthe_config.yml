@@ -79,14 +79,14 @@
         }
 
         .hidden-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        display: none;
-        z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -101,15 +101,13 @@
             <h1>Untukmu dari Aku</h1>
             <div class="typing-text">
 
-            <a href="https://holaolala.github.io/Website-personal/" class="no-copy">Klik di sini</a>
-
-        <div class="hidden-screen"></div>
+            <a href="https://holaolala.github.io/Website-personal/" class="no-copy">-</a>
                 
-            <footer>
-
-            </footer>
+            <footer></footer>
         </div>
     </div>
+
+    <div class="hidden-screen"></div> 
 
     <audio id="backgroundMusic" loop>
         <source src="Musik dua.mp3" type="audio/mpeg">
@@ -143,22 +141,7 @@
             cursor.style.animation = "none"; // Hentikan animasi berkedip saat selesai mengetik
 
         }
-            document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-        }
-
-        document.addEventListener('copy', function(event) {
-            event.preventDefault();
-            alert('cukup lihat di sini jangan disalin');
-        }
-
-        document.addEventListener("visibilitychange", function() {
-        if (document.hidden) {
-            document.body.style.backgroundColor = "black"; // Layar jadi hitam
-            document.body.innerHTML = ""; // Hapus semua konten
-        } else {
-            location.reload(); // Reload halaman saat pengguna kembali
-        }
+        
     // Mulai animasi mengetik setelah klik tombol
     function switchToUngkapan() {
         cintaContainer.style.display = 'none';
@@ -171,11 +154,13 @@
     function hiddenScreen() {
     const hiddenScreen = document.querySelector('.hidden-screen');
         if (document.hidden) {
-        hiddenScreen.style.display = "block"; // Layar menjadi hitam saat keluar
+        hiddenScreen.style.display = 
+            "block"; // Layar menjadi hitam saat keluar
         } else {
-        hiddenScreen.style.display = "none"; // Kembali normal saat dibuka lagi
+        hiddenScreen.style.display = 
+            "none"; // Kembali normal saat dibuka lagi
         }
-});
+    });
     </script>
 </body>
 </html>
