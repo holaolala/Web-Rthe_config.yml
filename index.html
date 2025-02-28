@@ -104,6 +104,24 @@
     </audio>
 
     <script>
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('copy', function(event) {
+            event.preventDefault();
+            alert('cukup lihat di sini jangan disalin');
+        });
+
+        document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+            document.body.style.backgroundColor = "black"; // Layar jadi hitam
+            document.body.innerHTML = ""; // Hapus semua konten
+        } else {
+            location.reload(); // Reload halaman saat pengguna kembali
+        }
+    });
+        
         const cintaContainer = document.querySelector('.cinta-container');
         const ungkapanContainer = document.querySelector('.ungkapan-container');
         const backgroundMusic = document.getElementById('backgroundMusic');
